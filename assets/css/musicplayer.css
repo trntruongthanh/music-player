@@ -1,0 +1,186 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #c2c5e8;
+    font-family: 'Poppins', sans-serif;
+}
+
+.music-player {
+    background-image: linear-gradient(0, #ffcadd, #766ae2);
+    border-radius: 20px;
+    width: 350px;
+    height: 550px;
+    box-shadow: 0 40px 100px rgba(255, 255, 255, 1);
+    padding: 30px;
+    overflow: hidden;
+    color: rgb(241, 220, 220);
+}
+
+.music-player .icon-pause {
+    display: none;
+}
+
+.music-player.playing .icon-pause {
+    display: inline-block;
+}
+
+.music-player.playing .icon-play {
+    display: none;
+}
+
+.btn.active {
+    color: #bd49ab;
+}
+
+.music-name,
+.artist-name {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.music-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.artist-name {
+    font-size: 16px;
+}
+
+.disk {
+    position: relative;
+    display: block;
+    margin: 40px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-image: url(../img/countonme.jpg);
+    background-size: cover;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.08);
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused;
+}
+
+.disk.play {
+    animation-play-state: running;
+}
+
+.disk::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #dbb1de;
+}
+
+.song-slider {
+    width: 100%;
+    position: relative;
+    padding-bottom: 16px;
+}
+
+.range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    background: #c785bd;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    box-shadow: -400px 0 0 400px #bd49ab;
+}
+
+.current-time,
+.song-duration {
+    font-size: 14px;
+}
+
+.song-duration {
+    position: absolute;
+    right: 0;
+}
+
+.btn {
+    display: inline-block;
+    width: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+.control {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+
+.icon-play::after,
+.icon-pause::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px rgba(157, 138, 241, 0.2), 0 0 0 10px rgba(235, 146, 184, 0.4);
+
+}
+
+.btn-backward-step:hover,
+.btn-forward-step:hover {
+    color: #bd49ab;
+}
+
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0;
+    }
+    50% {
+        box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.4);
+
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
